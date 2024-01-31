@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ibm-processmining-operator
+  namespace: openshift-gitops  
+  finalizers:
+    #cascade delete of resources
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc  
+  project: default
+  source:
+    directory:
+      recurse: false
+    kustomize:
+      namespace: abc-test1
+      patches:
+        - target:
+            kind: OperatorGroup
+            name: processmining-group
+          patch: |-
+            - op: replace
+              path: /spec/targetNamespaces/0/targetNamespaces
+              value: abc-test1    
+    path: operators/ibm-process-mining2
+    repoURL: https://github.com/samisalkosuo/gitops-techzone
+    targetRevision: HEAD
+  syncPolicy:
+#    syncOptions:
+#    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true

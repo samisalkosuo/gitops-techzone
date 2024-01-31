@@ -1,0 +1,13 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: ibm-automation-processmining
+  #namespace: ibm-processmining
+  annotations:
+    argocd.argoproj.io/sync-wave: "-7"
+spec:
+  channel: v3.0
+  installPlanApproval: Automatic
+  name: ibm-automation-processmining
+  source: ibm-operator-catalog
+  sourceNamespace: openshift-marketplace
