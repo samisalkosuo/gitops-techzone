@@ -8,7 +8,8 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: default
+    #namespace where to install
+    namespace: ibm-processmining
     server: https://kubernetes.default.svc  
   project: default
   source:
