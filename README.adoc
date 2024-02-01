@@ -1,5 +1,4 @@
-# gitops-techzone
+# techzone-helper
 
-GitOps for IBM TechZone.
+Helper scripts/YAMLs/etc for for OpenShift running in IBM TechZone.
 
-This repository includes GitOps stuff for OpenShift running in IBM TechZone.
